@@ -35,4 +35,4 @@ The following example will create a `WebView` and expose a function to it:
 How does it work?
 ----------------
 
-`MochaJSWebScriptingObject` leverages [Mocha's](https://github.com/logancollins/Mocha) methods for manipulating the Objective-C runtime. It creates an NSObject complying with the [`WebScripting`](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/WebKit/Classes/WebScriptObject_Class/index.html) protocol and manages function exposure between CocoaScript -> Objective-C -> WebView.
+`MochaJSWebScriptingObject` leverages [Mocha's](https://github.com/logancollins/Mocha) methods for manipulating the Objective-C runtime. It creates an NSObject complying with the [`WebScripting`](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/WebKit/Protocols/WebScripting_Protocol/index.html) protocol and manages function exposure between CocoaScript -> Objective-C -> WebView.
