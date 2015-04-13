@@ -7,6 +7,14 @@ var MochaJSWebScriptingObject = function(functionContainer){
 	//	Implement WebScripting Protocol method(s)
 	//	https://developer.apple.com/library/mac/documentation/Cocoa/Reference/WebKit/Protocols/WebScripting_Protocol/index.html#//apple_ref/occ/instm/NSObject/finalizeForWebScript
 
+	var ctx = JSContext.new();
+	var convert = function(input){
+		//	All return values to WebView must be Objective-C objects, otherwise things crash
+		//	If anyone knows of other ways to do this, do share
+
+		return JSValue.valueWithObject_inContext_(input, ctx).toObject();
+	};
+
 	delegateClassDesc.addInstanceMethodWithSelector_function_("invokeUndefinedMethodFromWebScript:withArguments:", function(methodName, argsArray){
 		var functionToCall = functionContainer[methodName];
 
@@ -14,7 +22,7 @@ var MochaJSWebScriptingObject = function(functionContainer){
 
 		var result = functionToCall.apply(null, argsArray);
 
-		return result;
+		return convert(result);
 	});
 
 	delegateClassDesc.registerClass();
