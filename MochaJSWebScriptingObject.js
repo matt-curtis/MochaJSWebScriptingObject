@@ -1,7 +1,7 @@
 var MochaJSWebScriptingObject = function(functionContainer){
 	//	Create class
 
-	var uniqueClassName = "MochaJSWebScriptingObject_DynamicClass_"+new Date().getTime();
+	var uniqueClassName = "MochaJSWebScriptingObject_DynamicClass_" + NSUUID.UUID().UUIDString();
 	var delegateClassDesc = MOClassDescription.allocateDescriptionForClassWithName_superclass_(uniqueClassName, NSObject);
 
 	//	Implement WebScripting Protocol method(s)
