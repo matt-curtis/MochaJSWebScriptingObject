@@ -12,25 +12,27 @@ How do I use it?
 
 The following example will create a `WebView` and expose a function to it:
 
-	@import 'MochaJSWebScriptingObject.js'
+```javascript
+@import 'MochaJSWebScriptingObject.js'
 
-	//  Create a WebView
+//  Create a WebView
 
-	var webView = WebView.new();
+var webView = WebView.new();
 
-	//  Expose functions
+//  Expose functions
 
-	var webScriptingObject = MochaJSWebScriptingObject({
-		demo: function(){
-			var app = [NSApplication sharedApplication];
-			[app displayDialog:"This is being called from a WebView! Cool!" withTitle:"Alert"];
-		}
-	});
+var webScriptingObject = MochaJSWebScriptingObject({
+	demo: function(){
+		var app = [NSApplication sharedApplication];
+		[app displayDialog:"This is being called from a WebView! Cool!" withTitle:"Alert"];
+	}
+});
 
-	var windowScriptObject = webView.windowScriptObject();
+var windowScriptObject = webView.windowScriptObject();
 
-	windowScriptObject.setValue_forKey_(webScriptingObject, "exported");
-	windowScriptObject.evaluateWebScript_("exported.demo();");
+windowScriptObject.setValue_forKey_(webScriptingObject, "exported");
+windowScriptObject.evaluateWebScript_("exported.demo();");
+````
 
 How does it work?
 ----------------
